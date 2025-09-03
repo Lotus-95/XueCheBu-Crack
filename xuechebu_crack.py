@@ -6,12 +6,12 @@ import os
 import requests
 import hashlib
 
-USER = ['', '']
+USER = ['18310306450', 'Wsj20070822']
 USER_INFO_CORRECT = True
 
 
 def get_unfinished_list(session):
-    url = 'http://xcbapi.xuechebu.com/videoApi/video/GetChapterList?os=pc'
+    url = 'https://xcbapi.xuechebu.com/videoApi/video/GetChapterList?os=pc'
 
     unfinished = []
 
@@ -19,8 +19,8 @@ def get_unfinished_list(session):
         r = session.get(url)
         data = get_response_data(r)
 
-        subject = data[0]  # 科目1
-        # subject = data[1]  # 科目3
+        # subject = data[0]  # 科目1
+        subject = data[1]  # 科目3
         classes = subject['ClassList']
 
         for a_class in classes:
@@ -42,7 +42,7 @@ def get_unfinished_list(session):
 
 
 def finish_chapter(session, chapter):
-    url = 'http://xcbapi.xuechebu.com/videoApi/student/UpdatePlay'
+    url = 'https://xcbapi.xuechebu.com/videoApi/student/UpdatePlay'
 
     data = {
         'os': 'pc',
@@ -68,7 +68,7 @@ def finish_chapter(session, chapter):
 
 
 def get_should_chapter(session):
-    url = 'http://xcbapi.xuechebu.com/videoApi/video/GetShouldChapter?os=pc'
+    url = 'https://xcbapi.xuechebu.com/videoApi/video/GetShouldChapter?os=pc'
 
     try:
         r = session.get(url)
